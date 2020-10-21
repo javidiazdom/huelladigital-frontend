@@ -9,10 +9,19 @@ type typeRoute = {
   organizations: {
     register: string;
   };
-  convocatories: { list: string; register: string; details: string };
+  convocatories: {
+    details: string;
+    register: string;
+    fetchConvocatory: string;
+    joinConvocatory: (id: string) => string;
+    registerAsReviser: string;
+    fetchListOfConvocatories: (page: number, pagesize: number) => string;
+    list: string;
+  };
 };
 
 const V1 = 'v1';
+const ENDPOINT_PROPOSALS = `/api/${V1}/proposals`;
 const ENDPOINT_VOLUNTEERS = `/api/${V1}/volunteers`;
 const ENDPOINT_EMAILCONFIRMATION = `/api/${V1}/email-confirmation`;
 
@@ -20,7 +29,11 @@ export const ROUTE: typeRoute = {
   convocatories: {
     details: '/convocatory-details',
     list: '/convocatories-list',
-    register: '/convocatory-register',
+    register: `${ENDPOINT_PROPOSALS}`,
+    fetchConvocatory: `${ENDPOINT_PROPOSALS}/`,
+    joinConvocatory: (id:string) => (`${ENDPOINT_PROPOSALS}/${id}/join`),
+    registerAsReviser: `${ENDPOINT_PROPOSALS}/reviser`,
+    fetchListOfConvocatories: (page:number, pagesize:number) => (`${ENDPOINT_PROPOSALS}/${page}/${pagesize}`),
   },
   organizations: {
     register: '/organization-register',
