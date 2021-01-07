@@ -11,6 +11,7 @@ import { Context } from '../../../../Context';
 import { FieldForm } from '../../../components/molecules/FieldForm';
 import { InputTextArea } from '../../../components/atoms/InputTextArea';
 import { SubmitButton } from '../../../components/atoms/SubmitButton';
+import { LinkButton } from '../../../components/atoms/LinkButton/LinkButton';
 
 export const ConvocatoryDetails: React.FC<{}> = () => {
   const isReadyForRevision = true;
@@ -26,9 +27,9 @@ export const ConvocatoryDetails: React.FC<{}> = () => {
           <div className="buttons">
             {
               isReadyForRevision &&
-              <><button>Editar</button>
-                <button className="aprove">Aprobar</button></> ||
-              isUserReviser && <button>Voluntarios</button>
+              <><LinkButton className="" key="prueba" path="#" text="Editar" />
+                <LinkButton className="aprove" path="#" text="Aprovar" /></> ||
+              isUserReviser && <LinkButton className="" path="#" text="Voluntarios" />
             }
             <button className="desestimate">Desestimar</button>
           </div>
